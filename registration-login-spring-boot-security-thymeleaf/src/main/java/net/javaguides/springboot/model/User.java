@@ -50,11 +50,12 @@ public class User {
 		
 	}
 	
-	public User(String firstName, String lastName, String email, String password, Collection<Role> roles) {
+	public User(String firstName, String lastName, String email, String password,String address, Collection<Role> roles) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
+		this.address=address;
 		this.password = password;
 		this.roles = roles;
 	}

@@ -49,6 +49,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		.and()
 		.formLogin()
 		.loginPage("/login")
+		.defaultSuccessUrl("http://azuredeploytrial.azurewebsites.net/", true)
 		.permitAll()
 		.and()
 		.logout()

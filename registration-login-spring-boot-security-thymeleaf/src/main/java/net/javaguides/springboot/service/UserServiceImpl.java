@@ -1,5 +1,6 @@
 package net.javaguides.springboot.service;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.stream.Collectors;
 
@@ -31,21 +32,21 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public User save(UserRegistrationDto registrationDto) {
+
+		User user = new User(registrationDto.getFirstName(), registrationDto.getLastName(), registrationDto.getEmail(),
+				passwordEncoder.encode(registrationDto.getPassword()), registrationDto.getAddress(),
+				Arrays.asList(new Role("ROLE_USER")));
+
 		/*
-		 * User user = new User(registrationDto.getFirstName(),
-		 * registrationDto.getLastName(), registrationDto.getEmail(),
-		 * passwordEncoder.encode(registrationDto.getPassword()), Arrays.asList(new
-		 * Role("ROLE_USER")));
+		 * User user = new User(); user.setFirstName(registrationDto.getFirstName());
+		 * user.setLastName(registrationDto.getLastName());
+		 * user.setEmail(registrationDto.getEmail());
+		 * user.setPassword(passwordEncoder.encode(registrationDto.getPassword()));
+		 * user.setAddress(registrationDto.getAddress());
 		 */
 
-		User user = new User();
-		user.setFirstName(registrationDto.getFirstName());
-		user.setLastName(registrationDto.getLastName());
-		user.setEmail(registrationDto.getEmail());
-		user.setPassword(passwordEncoder.encode(registrationDto.getPassword()));
-		user.setAddress(registrationDto.getAddress());
-
 		return userRepository.save(user);
+
 	}
 
 	@Override
